@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Linked-List</title>
+</head>
+
+<body>
+    <script>
+        class LinkedList {
+            // Initialization
+            constructor(data) {
+                this.head = {
+                    data: data,
+                    next: null
+                };
+                this.tail = this.head;
+                this.size = 1;
+            }
+
+            // Add New Node To The Tail
+            addToTail(data) {
+                let newNode = {
+                    data: data,
+                    next: null
+                };
+
+                if (this.head == null) {
+                    this.head = newNode;
+                }
+
+                let currentNode = this.head;
+                while (currentNode.next != null) {
+                    currentNode = currentNode.next;
+                }
+                currentNode.next = newNode;
+
+                this.size++;
+            }
+
+            // Remove Node At Middle Position
+            removeNode() {
+                let position = Math.ceil(this.size / 2);
+
+                let currentNode = this.head;
+                
+                for (let i = 1; i < position - 1; i++) {
+                    currentNode = currentNode.next;
+                }
+                currentNode.next = currentNode.next.next;
+                this.size--;
+            }
+
+            // Print List
+            viewList() {
+                let currentNode = this.head;
+
+                while (currentNode != null) {
+                    console.log(currentNode.data);
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+
+        let list = new LinkedList(10);
+        list.addToTail(20);
+        list.addToTail(30);
+        list.addToTail(40);
+        list.addToTail(50);
+
+        console.log("Original List:",list);
+
+        list.removeNode();
+
+        console.log("After Removing Middle Node:",list);
+        list.viewList();
+    </script>
+</body>
+
+</html>

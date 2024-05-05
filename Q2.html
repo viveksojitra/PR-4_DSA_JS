@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack - Middle Node Remove</title>
+</head>
+<body>
+    <script>
+        class StackMid{
+            constructor(){
+                this.stack = [];
+                this.size = this.stack.length;
+                this.org = [];
+            }
+
+            push(element){
+                this.stack.push(element);
+                this.size = this.stack.length;
+                this.org.push(element);
+            }
+
+            deleteMid(){
+                let midPoint = Math.floor(this.size / 2);
+                this.stack.splice(midPoint, 1);
+                this.size--;
+                
+                return this.stack;
+            }
+        }
+
+        let st = new StackMid();
+        st.push(10);
+        st.push(20);
+        st.push(30);
+        st.push(40);
+        st.push(50);
+
+        st.deleteMid();
+
+        console.log("Original Stack: ",st.org);
+        console.log("After Delition: ",st.stack);
+    </script>
+</body>
+</html>

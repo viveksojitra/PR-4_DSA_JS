@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack - Reverse</title>
+</head>
+<body>
+    <script>
+        class StackRev{
+            constructor(){
+                this.stack = [];
+                this.queue = [];
+                this.size = this.stack.length;
+                this.org = [];
+            }
+
+            enqueue(element){
+                this.stack.push(element);
+                this.org.push(element);
+            }
+
+            reverse(){
+                while(this.stack.length != 0){
+                    this.queue.push(this.stack.pop());
+                    
+                }
+
+                while(this.queue.length != 0){
+                    this.stack.push(this.queue.shift());
+                }
+
+                return this.stack;
+            }
+        }
+
+        let st = new StackRev();
+        st.enqueue(10);
+        st.enqueue(20);
+        st.enqueue(30);
+        st.enqueue(40);
+        st.enqueue(50);
+
+        console.log("Original Stack: ",st.org);
+        console.log("Reversed Stack: ",st.reverse());
+    </script>
+</body>
+</html>

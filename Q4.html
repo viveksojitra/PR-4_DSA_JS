@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack - Sorting</title>
+</head>
+
+<body>
+
+    <script>
+        class Stack {
+            constructor() {
+                this.stack = [];
+                this.size = this.stack.length;
+
+                this.sorted = [];
+            }
+
+            push(element) {
+                this.stack.push(element);
+                this.size = this.stack.length;
+            }
+
+            sorting(){
+                while(this.stack.length != 0){
+
+                    const poped = this.stack.pop();
+
+                    while(this.sorted.length != 0 && this.sorted[this.sorted.length - 1] > poped){
+                        this.stack.push(this.sorted.pop());
+                    }
+                    this.sorted.push(poped);
+                }
+                return this.sorted;
+            }
+
+            data() {
+                this.stack.forEach(element => {
+                    console.log(element);
+                });
+            }
+        }
+
+        let st = new Stack();
+        st.push(10);
+        st.push(3);
+        st.push(5);
+        st.push(1);
+        st.push(12);
+        console.log("Original Stack:", st.stack);
+
+        st.sorting();
+
+        console.log("Sorted Stack",st.sorted);
+        st.data();
+    </script>
+</body>
+
+</html>
